@@ -51,7 +51,7 @@ def Busca_ML(produto_nome):
     else:
         for proc in produtos_2:
             produto_titulo = proc.find('h2', attrs = {'class': 'ui-search-item__title ui-search-item__group__element shops__items-group-details shops__item-title'}).text
-            produto_preco = proc.find('span', attrs={'class':'price-tag-text-sr-only'}).text
+            produto_preco = proc.find('span', attrs={'class':'price-tag-amount'}).text
             parcelas =proc.find('span', attrs={'class':'ui-search-item__group__element shops__items-group-details ui-search-installments ui-search-color--LIGHT_GREEN'})
             if (parcelas):
                 parcelas =proc.find('span', attrs={'class':'ui-search-item__group__element shops__items-group-details ui-search-installments ui-search-color--LIGHT_GREEN'}).text
@@ -61,9 +61,10 @@ def Busca_ML(produto_nome):
                 parcelas = "Sem parcelamento"
             for links in produtos_link:
                 link = links.find('a',attrs={'class':'ui-search-link'})
-                link = link['href']                
-            ('Título do Produto: ' + produto_titulo )
+                link = link['href'] 
+            print('Título do Produto: ' + produto_titulo )
             print('Preço do Produto: ' + produto_preco )
             print('Número de Parcelas ' + parcelas )
             print('Link: ' + link)
             print('\n\n')
+
