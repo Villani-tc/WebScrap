@@ -20,5 +20,5 @@ def Busca_Kabum(produto_nome):
         print('Título do Produto: ' + produto_titulo )
         print('Preço do Produto: ' + produto_preco )
         print('Link: ' + produto_link )
-        print('\n')
+        print('\n\n')
 

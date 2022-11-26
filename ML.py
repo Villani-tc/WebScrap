@@ -66,4 +66,4 @@ def Busca_ML(produto_nome):
             print('Preço do Produto: ' + produto_preco )
             print('Número de Parcelas ' + parcelas )
             print('Link: ' + link)
-            print('\n')
+            print('\n\n')
