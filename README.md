@@ -10,6 +10,7 @@ Fase 2:
 * Tratar os dados por preço  :x:
 * Adicionar uma coluna com a data de extração :x:
 * Criar um alerta de preço :x:
+* Adicionar mais sites
 
 Fase 3:
 * Criar Interface interativa :x:
