@@ -1,6 +1,6 @@
 # WebScrap-Produtos
 
-Esse repóstio recebe um input com o nome de um produto e gera um arquivo CSV contendo o nome/marca , preço, link direto e site de procura. Atualmente o script tem comunicação com o ML e Kabum
+Esse repóstio possui o arquivo app.py que recebe um input com o nome de um produto e gera um arquivo CSV contendo o nome/marca , preço, link direto e site de procura. Atualmente o script tem comunicação com o ML e Kabum. Cada um dos sites que o script se comunica terá um nomedosite.py (ex:Kabum.py).
 
 Fase 1:
 * Receber Dados de um site exemplo  :heavy_check_mark:
