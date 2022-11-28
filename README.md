@@ -7,10 +7,10 @@ Fase 1:
 * Gerar um CSV com os dados   :heavy_check_mark:
 
 Fase 2:
-* Tratar os dados por preço  :x:
-* Adicionar uma coluna com a data de extração :x:
+* Tratar os dados por preço  :heavy_check_mark:
+* Adicionar uma coluna com a data e hora de extração :x:
 * Criar um alerta de preço :x:
-* Adicionar mais sites
+* Adicionar mais sites  :x:
 
 Fase 3:
 * Criar Interface interativa :x:

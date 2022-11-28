@@ -14,10 +14,19 @@ def Busca_ML(produto_nome):
     produtos_link = site.findAll('div', attrs={'class':'andes-card andes-card--flat andes-card--default ui-search-result shops__cardStyles ui-search-result--core andes-card--padding-default andes-card--animated'})  
     if produtos_1 == None:
         with open('mercadolivre.csv','w',) as file:
-            writer = csv.writer(file,delimiter=';',quoting=csv.QUOTE_NONE)
+            writer = csv.writer(file,delimiter='|',quoting=csv.QUOTE_NONE)
+            headers = ['Titulo', 'Preço', 'Link' , 'Kabum']
+            writer.writerow(headers)
             for produto in produtos_1:
                 produto_titulo = produto.find('h2', attrs = {'class': 'ui-search-item__title shops__item-title'}).text
-                produto_preco = produto.find('span', attrs={'class':'price-tag-fraction'}).text    
+                produto_preco = produto.find('span', attrs={'class':'price-tag-fraction'}).text
+                produto_preco = str(produto_preco)
+                produto_preco = produto_preco[2:] 
+                index = produto_preco.find(',')
+                if index != -1:
+                    produto_preco = produto_preco[0:-3]
+                else:
+                    contains = 0   
                 produto_preco_cents = produto.find('span', attrs={'class':'price-tag-cents'})
                 produto_preco_cents = str(produto_preco_cents)
                 produto_preco_cents = produto_preco_cents[30:32]
@@ -36,12 +45,6 @@ def Busca_ML(produto_nome):
                     parcelas = None
 
                 print('Título do Produto: ' + produto_titulo )
-                if (produto_preco_cents):
-                    print('Preço do Produto: ' + final_preco )
-                else:
-                    final_preco = produto_preco + ',00'
-                    print('Preço do Produto: ' + final_preco )
-                
                 if parcelas == None:
                     print('Sem Parcelamento')
                     
@@ -49,15 +52,24 @@ def Busca_ML(produto_nome):
                     print('Número de Parcelas ' + parcelas + ' No valor de ' + parcelas_valor)
 
                     print('Link: ' + link)
-                data = [produto_titulo, final_preco ,link , 'MercadoLivre']
+                data = [produto_titulo, produto_preco ,link , 'MercadoLivre']
                 writer.writerow(data)
             
     else:
         with open('Busca_DUMP\mercadolivre.csv','w',encoding='utf-8') as file:
-            writer = csv.writer(file,delimiter=';',quoting=csv.QUOTE_NONE)
+            writer = csv.writer(file,delimiter='|',quoting=csv.QUOTE_NONE)
+            headers = ['Titulo', 'Preço', 'Link' , 'Kabum']
+            writer.writerow(headers)
             for proc in produtos_2:
                 produto_titulo = proc.find('h2', attrs = {'class': 'ui-search-item__title ui-search-item__group__element shops__items-group-details shops__item-title'}).text
                 produto_preco = proc.find('span', attrs={'class':'price-tag-amount'}).text
+                produto_preco = str(produto_preco)
+                produto_preco = produto_preco[2:]
+                index = produto_preco.find(',')
+                if index != -1:
+                    produto_preco = produto_preco[0:-3] 
+                else:
+                    contains = 0
                 parcelas =proc.find('span', attrs={'class':'ui-search-item__group__element shops__items-group-details ui-search-installments ui-search-color--LIGHT_GREEN'})
                 if (parcelas):
                     parcelas =proc.find('span', attrs={'class':'ui-search-item__group__element shops__items-group-details ui-search-installments ui-search-color--LIGHT_GREEN'}).text
@@ -68,11 +80,11 @@ def Busca_ML(produto_nome):
                 for links in produtos_link:
                     link = links.find('a',attrs={'class':'ui-search-link'})
                     link = link['href'] 
-                print('Título do Produto: ' + produto_titulo )
-                print('Preço do Produto: ' + produto_preco )
-                print('Número de Parcelas ' + parcelas )
-                print('Link: ' + link)
-                print('\n\n')
+                #print('Título do Produto: ' + produto_titulo )
+                #print('Preço do Produto: ' + produto_preco )
+                #print('Número de Parcelas ' + parcelas )
+                #print('Link: ' + link)
+                #print('\n\n')
                 data = [produto_titulo, produto_preco ,link , 'MercadoLivre']
                 writer.writerow(data)
 
